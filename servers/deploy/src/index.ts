@@ -10,6 +10,10 @@ class DeploymentServer {
     }
 
     private routes() {
+        this.express.use((request, response) => {
+            console.log(request.originalUrl);
+        });
+
         this.express.post('/development/did-push', (request, response) => {
             console.log('Someone pushed new code! We should probably, errrmm.. Do something.');
             response.sendStatus(200);
